@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Основаня страница
+{% endblock %}
+
+{% block tags %}
+
+{% for tag in tags %}
+    <a href="{{ tag.url }}" class="nav-link nav-link-faded has-icon">{{ tag.title }}</a>
+{% endfor %}
+
+{% endblock %}
+
+{% block content %}
+
+{% for post in posts %}
+<div class="card mb-2">
+    <div class="card-body p-2 p-sm-3">
+        <div class="media forum-item">
+        <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="{{ post.owner.image.path }}" class="mr-3 rounded-circle" width="50" alt="User" /></a>
+        <div class="media-body">
+        <h6><a href="{{ post.pk }}" data-toggle="collapse" data-target=".forum-content" class="text-body">{{ post.title }}</a></h6>
+        <p class="text-secondary">
+        <a href = "{{ post.pk }}" style="text-decoration: none;color: whitesmoke;">
+        {{ post.description|truncatechars:75 }}
+        </a>
+        </p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

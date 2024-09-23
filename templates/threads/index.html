@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Основаня страница
+{% endblock %}
+
+{% block tags %}
+{% for tag in tags %}
+    <a href="{{ tag.url }}" class="nav-link nav-link-faded has-icon">{{ tag.title }}</a>
+{% endfor %}
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {{ form.error }}
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Отображает форму в виде параграфов -->
+    <button type="submit">Отправить</button>
+</form>
+{% endblock %}
